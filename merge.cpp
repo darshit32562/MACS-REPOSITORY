@@ -1,14 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int mergeIterations = 0;
-
-void mergeArray(vector<int>& arr, int l, int m, int r) {
+void mergeArray(vector<int>& arr, int l, int m, int r, int &iterations) {
     vector<int> temp;
     int i = l, j = m + 1;
 
     while(i <= m && j <= r) {
-        mergeIterations++;
+        iterations++;
         if(arr[i] <= arr[j])
             temp.push_back(arr[i++]);
         else
@@ -22,17 +20,17 @@ void mergeArray(vector<int>& arr, int l, int m, int r) {
         arr[l + k] = temp[k];
 }
 
-void mergeSortHelper(vector<int>& arr, int l, int r) {
+void mergeSortHelper(vector<int>& arr, int l, int r, int &iterations) {
     if(l >= r) return;
 
     int m = (l + r) / 2;
-    mergeSortHelper(arr, l, m);
-    mergeSortHelper(arr, m + 1, r);
-    mergeArray(arr, l, m, r);
+    mergeSortHelper(arr, l, m, iterations);
+    mergeSortHelper(arr, m + 1, r, iterations);
+    mergeArray(arr, l, m, r, iterations);
 }
 
 int mergeSort(vector<int>& arr) {
-    mergeIterations = 0;
-    mergeSortHelper(arr, 0, arr.size() - 1);
-    return mergeIterations;
+    int iterations = 0;
+    mergeSortHelper(arr, 0, arr.size() - 1, iterations);
+    return iterations;
 }
