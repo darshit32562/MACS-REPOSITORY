@@ -21,23 +21,27 @@ vector<int> generateArray(int n) {
 
 void testSort(string name, vector<int> arr, int (*sortFunc)(vector<int>&)) {
     auto start = chrono::high_resolution_clock::now();
-    int it = sortFunc(arr);
+    int iterations = sortFunc(arr);
     auto end = chrono::high_resolution_clock::now();
 
     cout << "\n=== " << name << " ===\n";
     printArray(arr);
-    cout << "Iterations: " << it;
+    cout << "Iterations: " << iterations;
     cout << " | Time: "
-         << chrono::duration<double, milli>(end-start).count()
+         << chrono::duration<double, milli>(end - start).count()
          << " ms\n";
 }
 
 int main() {
     srand(time(0));
 
-    vector<int> arr = generateArray(20);
+    int n;
+    cout << "Enter size of array: ";
+    cin >> n;
 
-    cout << "Original Array:\n";
+    vector<int> arr = generateArray(n);
+
+    cout << "\nOriginal Array:\n";
     printArray(arr);
 
     testSort("Bubble Sort", arr, bubbleSort);
