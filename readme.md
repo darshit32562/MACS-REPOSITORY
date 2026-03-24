@@ -1,42 +1,111 @@
-# 🚀 Sorting Algorithms Analyzer
+# 📊 Sorting Algorithms – Practical Analysis
 
-This project implements multiple sorting algorithms and compares them based on:
+This project is a hands-on implementation of various sorting algorithms with a focus on understanding their real behavior through:
 
-- Time taken
+- Execution time
 - Number of iterations
-- Output correctness
+- Output verification
+
+Instead of just theoretical study, this repo helps build **intuition** about how algorithms actually perform.
 
 ---
 
-## 🔧 Algorithms Implemented
+## 🔹 Algorithms Covered
 
-- Bubble Sort
-- Insertion Sort
-- Selection Sort
-- Quick Sort
-- Merge Sort
+### 🟢 Merge Sort
 
----
+Merge Sort follows a divide-and-conquer approach where the array is repeatedly divided into halves and then merged in sorted order.
 
-## 📊 What this project shows
+**Recurrence:**
+T(n) = 2T(n/2) + O(n)
 
-- Practical behavior of algorithms
-- Difference between O(n²) and O(n log n)
-- Real execution time vs theoretical complexity
+Since the array is split evenly at each step and merging takes linear time, the complexity becomes:
 
----
+➡️ **Time Complexity:** O(n log n)  
+➡️ **Space Complexity:** O(n)
 
-## ⚙️ Features
-
-- Random array generator
-- Iteration counter for each algorithm
-- Time measurement using chrono
-- Modular design (each algorithm separate)
+✔ Performs consistently well regardless of input.
 
 ---
 
-## ▶️ How to Run
+### 🔵 Quick Sort
 
-```bash
-g++ main.cpp -o main
-./main
+Quick Sort selects a pivot element and partitions the array around it.
+
+**Best / Average Case:**
+Balanced partitioning  
+➡️ O(n log n)
+
+**Worst Case:**
+Highly unbalanced partitions (e.g., already sorted array with bad pivot)  
+➡️ O(n²)
+
+✔ Very fast in practice  
+⚠️ Performance depends heavily on pivot choice
+
+---
+
+### 🟡 Selection Sort
+
+Selection Sort repeatedly selects the minimum element and places it at the correct position.
+
+**Total comparisons:**
+n(n−1)/2
+
+➡️ **Time Complexity:** O(n²)  
+➡️ **Space Complexity:** O(1)
+
+✔ Simple and predictable  
+❌ Not efficient for large datasets
+
+---
+
+### 🔴 Bubble Sort
+
+Bubble Sort repeatedly swaps adjacent elements if they are in the wrong order.
+
+➡️ **Worst/Average Case:** O(n²)  
+➡️ **Best Case (optimized):** O(n)
+
+✔ Easy to understand  
+❌ Inefficient in most real scenarios
+
+---
+
+### 🟣 Insertion Sort
+
+Insertion Sort builds the sorted array one element at a time.
+
+➡️ **Worst Case:** O(n²)  
+➡️ **Average Case:** O(n²)  
+➡️ **Best Case (already sorted):** O(n)
+
+✔ Very efficient for small or nearly sorted data  
+✔ Used in hybrid algorithms
+
+---
+
+## ⚙️ What This Project Demonstrates
+
+- Difference between theoretical and practical performance  
+- Impact of input size and ordering  
+- Comparison of iteration counts across algorithms  
+- Use of `chrono` library for time measurement  
+
+---
+
+## 📌 Key Observations
+
+- Merge Sort gives stable and predictable performance  
+- Quick Sort is generally fastest but can degrade in edge cases  
+- Insertion Sort performs surprisingly well on small datasets  
+- Bubble and Selection Sort are mainly useful for learning concepts  
+
+---
+
+## 🚀 Conclusion
+
+Understanding sorting algorithms is not just about memorizing complexities —  
+it's about knowing **when and why** to use each one.
+
+This project is aimed at building that intuition.
